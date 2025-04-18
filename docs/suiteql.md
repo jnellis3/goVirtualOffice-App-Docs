@@ -1,6 +1,3 @@
-![image](https://github.com/user-attachments/assets/9fc242e4-bc44-47f5-ab52-9de7154c9ce4)
-
-
 <h1 style='text-align: center;'> Netsuite Query Extension </h1>
 
 **Version:** 1.0.0.0
