@@ -1,7 +1,5 @@
-<img style="display: block;
-            margin-left: auto;
-            margin-right: auto;" 
-src="./govirtualoffice.png" width = 300/>
+![image](https://github.com/user-attachments/assets/9fc242e4-bc44-47f5-ab52-9de7154c9ce4)
+
 
 <h1 style='text-align: center;'> Netsuite Query Extension </h1>
 
@@ -28,8 +26,8 @@ Queries can be tested and saved from within the extension, and results can be do
 ---
 Clicking on the extension will bring up the following popup window:
 
-<img src="./extension_blank.png" height=400 style='display: block;margin-left: auto;
-margin-right:auto;'/>
+![image](https://github.com/user-attachments/assets/3a1090f8-24d2-4f83-be9f-6568477a1b6d)
+
 
 The extension acts like a simple IDE when opened within a scriptable record. Typing will bring up suggestions for table names and field names when using a dot join on a table. A suggestion can be applied by using the arrow keys to find the suggestion, and then pressing 'Tab'. The will complete the word and also display information about the table or field in the message box below the editor.
 
@@ -88,8 +86,8 @@ It's also common to use SuiteQL's builtin functions as a part of your query. To 
 ### Running your Query
 Pressing 'Run-Query' will execute a query using the 'N/Query' module in netsuite. This will produce either a table of results, or an error, and will display in the message box below the IDE.
 
-<img src="./emp_s.png" height=400 style='display: block;margin-left: auto;
-margin-right:auto;'/>
+![image](https://github.com/user-attachments/assets/be2d59ec-858e-4c68-bd54-e7400e0fd4ab)
+
 
 A search bar is provided that will automatically scroll to the text you are trying to find. Pressing 'enter' will bring you to the next set of matching keywords.
 
