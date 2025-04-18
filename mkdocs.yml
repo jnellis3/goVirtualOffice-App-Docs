@@ -1,0 +1,6 @@
+site_name: goVirtualOffice Accelerator's Documentation
+nav:
+  - Home: index.md
+  - SimpleConnect: simpleconnect.md
+  - BoostSync: boostsync.md
+  - SuiteQL Chrome Extension: suiteql.md
