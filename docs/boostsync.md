@@ -1,106 +1,79 @@
-<img style="display: block;
-            margin-left: auto;
-            margin-right: auto;" 
-src="./govirtualoffice.png" width = 300/>
+# BoostSync Features and Limitations
 
-<h1 style='text-align: center;'> Netsuite Query Extension </h1>
+BoostSync is a data synchronization tool designed to connect and align data between NetSuite and HubSpot systems. This document outlines the core components and their limitations.
 
-**Version:** 1.0.0.0
+## Configurations
 
-**Created By:** Jacob Nellis / goVirtualOffice LLC
+Configurations define the synchronization relationship between record types across systems.
 
-## **Table of Contents**
----
+**Key Features:**
 
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Shortcuts](#shortcuts-and-important-notes)
-- [Credits/Acknowledgements](#credits-and-acknowledgements)
+- Establish sync relationships between NetSuite and HubSpot objects
+- Support for one-way or bi-directional synchronization
+- Customizable through filters, deduplication keys, and mapping rules
 
-## **Introduction**
----
+**Limitations:**
 
-The Netsuite Query Tool by goVirtual office provides a simple and conveinient way to create and share queries across all your Netsuite accounts. When opened within a netsuite scriptable record, the extension will provide automatic type checking based on the netsuite accounts record catalog.
+- Each record type can only have one configuration (1:1 mapping only)
+- No support for one-to-many relationships between systems
+- Duplicate records are automatically marked ineligible for syncing
+- Deleted objects aren't automatically replaced - errors will log until the object is deleted from both systems
 
-Queries can be tested and saved from within the extension, and results can be downloaded to both CSV and JSON formats.
+## Filters
 
-## **Getting Started**
----
-Clicking on the extension will bring up the following popup window:
+Filters determine which records are eligible for synchronization.
 
-<img src="./extension_blank.png" height=400 style='display: block;margin-left: auto;
-margin-right:auto;'/>
+**Key Features:**
 
-The extension acts like a simple IDE when opened within a scriptable record. Typing will bring up suggestions for table names and field names when using a dot join on a table. A suggestion can be applied by using the arrow keys to find the suggestion, and then pressing 'Tab'. The will complete the word and also display information about the table or field in the message box below the editor.
+- Custom logic for record eligibility
+- Support for queries, datasets, and search-based filtering
 
-The File tab can be used to save and load queries, and the export tab can convert results into a downloadable CSV or JSON file.
+**Limitations:**
 
-## **Shortcuts and Important Notes**
----
+- Records must meet filter criteria in both systems to be matched
+- Misaligned filters can result in duplicate records being created
 
-### Typing Suggestions
+## Deduplication Keys
 
-#### Table and Field Suggestions
-When the extension is initially loaded, it will first pull in all table names from the Netsuite account you have open. Once you have typed your first table name, this will trigger a function that will search for the field names in that table. You can then see the fields available by placing a '.' after the table name.
+Deduplication keys establish how records are matched across systems.
 
-**EXAMPLE:**
+**Key Features:**
 
-    transaction.<field name>
-    
-    // field suggestions will not appear
-    // unless you explicitly specify the table 
-    // you are using with the . operation
+- Support for up to three fields as matching criteria
+- Single keys (common-key) or multiple keys (common-composite-key)
+- Typical examples include email addresses for contacts
 
-**Note:** If you don't get field suggestions right-away, you may need to wait a few seconds for the names to get loaded in.
+**Limitations:**
 
-**Note:** Suggestions can be enabled-disabled with 'Ctrl+Space'
+- Keys are automatically converted to lowercase (case-insensitive matching)
+- Multiple matching records result in duplicates being neglected
+- Key value changes after initial sync won't affect existing record pairings
 
-#### Table Aliases
-Fields can still be found from tables that have been givin aliases, but it's important that the alias is defined using all caps 'AS' in the query. Defining a table alias any other way will prevent the extension from recognizing which table you are trying to get fields from.
+## Field Mappings
 
-**Working example**
+Field mappings control which data points synchronize between paired records.
 
-    // Editor will be able to suggest the field name
-    SELECT
-        trans.<fieldname>
-    FROM
-        transaction AS trans
+**Key Features:**
 
-**Not Working Examples**
+- One-way or bi-directional field synchronization options
+- Custom mapping tables for multi-select fields
 
-    // Editor will not be able to suggest field name
-    SELECT
-        trans.<fieldname>
-    FROM
-        transaction trans
-    
-    // another bad query
-    SELECT
-        trans.<fieldname>
-    FROM
-        transaction as trans
-    
+**Limitations:**
 
+- Static mapping direction (cannot change dynamically based on record state)
+- No support for multi-field logic or calculated mappings
+- Field types must be compatible between systems
+- Only fields available directly on the record can be mapped
 
-#### Netsuite Functions
-It's also common to use SuiteQL's builtin functions as a part of your query. To see these keywords, you can type 'FUNC' into the editor. This will bring up the different types of Netsuite enumerations. Selecting an option with 'Tab' will then open up the keywords associated with that catagory.
+## Association Mappings
 
-### Running your Query
-Pressing 'Run-Query' will execute a query using the 'N/Query' module in netsuite. This will produce either a table of results, or an error, and will display in the message box below the IDE.
+Association mappings handle relationships between objects across systems.
 
-<img src="./emp_s.png" height=400 style='display: block;margin-left: auto;
-margin-right:auto;'/>
+**Key Features:**
+- Support for 1:1 associations (primary company, parent company)
+- Support for 1:many associations (line items, related contacts)
 
-A search bar is provided that will automatically scroll to the text you are trying to find. Pressing 'enter' will bring you to the next set of matching keywords.
-
-## **Contact Information**
----
-
-This extension is provided by goVirtualOffice. We are an award-winning NetSuite provider helping companies enhance productivity, improve efficiency and grow profits by unifying, simplifying and automating business processes. We've become one of the top NetSuite consulting companies in the world. You can find us at our <a href="https://goVirtualOffice.com">website</a>.
-
-For feature request/bug reports, please email jnellis@govirtualoffice.com
-
-## **Credits and Acknowledgements**
----
-
-This extension was inspired by Tim Dietrich's <a href="https://timdietrich.me/netsuite-suitescripts/suiteql-query-tool/">SuiteQL Query tool</a>.
+**Limitations:**
+- Associated objects must also be included in sync configurations
+- Only objects in filter criteria can be associated (exception: line items)
+- Line items are treated as part of the opportunity record rather than separate entities
