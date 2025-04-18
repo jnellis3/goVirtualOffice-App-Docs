@@ -1,124 +1,106 @@
-# Simple Connect Documentation
+<img style="display: block;
+            margin-left: auto;
+            margin-right: auto;" 
+src="./govirtualoffice.png" width = 300/>
 
-## Overview
+<h1 style='text-align: center;'> Netsuite Query Extension </h1>
 
-Simple Connect is the simple way to export NetSuite Saved Searches into external software via REST. After setting up a Simple Connect User and a Simple Connect Search record, users can quickly and easily export the data they need.
+**Version:** 1.0.0.0
 
+**Created By:** Jacob Nellis / goVirtualOffice LLC
+
+## **Table of Contents**
 ---
 
-## Getting Started
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [Shortcuts](#shortcuts-and-important-notes)
+- [Credits/Acknowledgements](#credits-and-acknowledgements)
 
-### Creating a Simple Connect User
-
-1. Log in to NetSuite.
-2. Navigate to **Setup > Simple Connect > New Simple Connect User**.
-3. Set **NetSuite User Account** to the employee who will use this account.
-   - The user will receive an email to complete the setup process.
-4. Set the **Simple Connect Username**.
-   - Choose a memorable username.
-5. Click **Invite User**.
-6. The employee will receive an email with a setup link. Click this link.
-7. On the **Complete Simple Connect User Setup** screen, set the **Simple Connect Password**.
-   - Password entry will be visible (not hidden), so be careful during screen sharing.
-8. Click **Submit**.
-
-*If the email isn't received, navigate to **Setup > Company > Sent Email List** to find the email.*
-
+## **Introduction**
 ---
 
-### Setting Up a Saved Search for Simple Connect
+The Netsuite Query Tool by goVirtual office provides a simple and conveinient way to create and share queries across all your Netsuite accounts. When opened within a netsuite scriptable record, the extension will provide automatic type checking based on the netsuite accounts record catalog.
 
-#### Example: Single Record per Row (e.g., Non-Inventory items)
+Queries can be tested and saved from within the extension, and results can be downloaded to both CSV and JSON formats.
 
-1. Navigate to **Lists > Saved Searches > New**.
-2. Select **Item**.
-3. Name the search (suggested prefix: SC).
-4. Set the search as **Public**.
-5. Add the first **Criteria filter** as:
-   - **Formula Numeric**: `{internalid}`
-   - **Condition**: Greater than
-   - **Value**: `0`
-6. Add other desired criteria (e.g., Type is Non-inventory).
-7. Navigate to **Results tab**.
-8. First **SORT BY** field:
-   - **Formula Numeric**: `{internalid}`
-9. First result row:
-   - **Formula Number**: `{internalid}`
-   - **Custom Label**: `ROWKEY`
-10. Add additional result rows as needed.
-    ![image](https://github.com/user-attachments/assets/e32a32a6-cd55-402e-8a7f-b96e380c3f99)
+## **Getting Started**
+---
+Clicking on the extension will bring up the following popup window:
 
-12. Save the search.
+<img src="./extension_blank.png" height=400 style='display: block;margin-left: auto;
+margin-right:auto;'/>
 
-#### Example: Multiple Rows per Record (e.g., Sales Order lines)
+The extension acts like a simple IDE when opened within a scriptable record. Typing will bring up suggestions for table names and field names when using a dot join on a table. A suggestion can be applied by using the arrow keys to find the suggestion, and then pressing 'Tab'. The will complete the word and also display information about the table or field in the message box below the editor.
 
-Use the same steps as above, but for the formula:
+The File tab can be used to save and load queries, and the export tab can convert results into a downloadable CSV or JSON file.
 
-- Formula example for multiple lines:
-
-```plaintext
-({internalid}*10000) + TO_NUMBER({line})
-```
-
-Set this formula for both the criteria and the ROWKEY in results.
-
+## **Shortcuts and Important Notes**
 ---
 
-### Setting Up the Simple Connect Search Record
+### Typing Suggestions
 
-1. Navigate to **Setup > Simple Connect > Simple Connect Search > New**.
-2. Populate the **Saved Search** field with the created search.
-3. Add Simple Connect Users to the sublist and assign the execution role.
-4. Save the record.
-   - A URL will populate for accessing search data.
+#### Table and Field Suggestions
+When the extension is initially loaded, it will first pull in all table names from the Netsuite account you have open. Once you have typed your first table name, this will trigger a function that will search for the field names in that table. You can then see the fields available by placing a '.' after the table name.
 
+**EXAMPLE:**
+
+    transaction.<field name>
+    
+    // field suggestions will not appear
+    // unless you explicitly specify the table 
+    // you are using with the . operation
+
+**Note:** If you don't get field suggestions right-away, you may need to wait a few seconds for the names to get loaded in.
+
+**Note:** Suggestions can be enabled-disabled with 'Ctrl+Space'
+
+#### Table Aliases
+Fields can still be found from tables that have been givin aliases, but it's important that the alias is defined using all caps 'AS' in the query. Defining a table alias any other way will prevent the extension from recognizing which table you are trying to get fields from.
+
+**Working example**
+
+    // Editor will be able to suggest the field name
+    SELECT
+        trans.<fieldname>
+    FROM
+        transaction AS trans
+
+**Not Working Examples**
+
+    // Editor will not be able to suggest field name
+    SELECT
+        trans.<fieldname>
+    FROM
+        transaction trans
+    
+    // another bad query
+    SELECT
+        trans.<fieldname>
+    FROM
+        transaction as trans
+    
+
+
+#### Netsuite Functions
+It's also common to use SuiteQL's builtin functions as a part of your query. To see these keywords, you can type 'FUNC' into the editor. This will bring up the different types of Netsuite enumerations. Selecting an option with 'Tab' will then open up the keywords associated with that catagory.
+
+### Running your Query
+Pressing 'Run-Query' will execute a query using the 'N/Query' module in netsuite. This will produce either a table of results, or an error, and will display in the message box below the IDE.
+
+<img src="./emp_s.png" height=400 style='display: block;margin-left: auto;
+margin-right:auto;'/>
+
+A search bar is provided that will automatically scroll to the text you are trying to find. Pressing 'enter' will bring you to the next set of matching keywords.
+
+## **Contact Information**
 ---
 
-## Access Simple Connect via Excel
+This extension is provided by goVirtualOffice. We are an award-winning NetSuite provider helping companies enhance productivity, improve efficiency and grow profits by unifying, simplifying and automating business processes. We've become one of the top NetSuite consulting companies in the world. You can find us at our <a href="https://goVirtualOffice.com">website</a>.
 
-1. Open Excel.
-2. Navigate to the **Data** tab.
-3. Click **Get Data > From Other Sources > From Web**.
-4. Paste the URL from the Simple Connect Search record.
-5. Click **OK**.
-6. Choose **Basic** on the authentication screen.
-7. Enter your Simple Connect username and password.
-8. Click **Connect**.
-9. Once data preview appears, click **Load**.
+For feature request/bug reports, please email jnellis@govirtualoffice.com
 
-### Tips for Simple Connect in Excel
-
-- Rename queries to match data clearly:
-  - Double-click 'Queries', rename under 'Properties'.
-    ![image](https://github.com/user-attachments/assets/a161ee5c-bd12-49c7-8423-b512558363ad)
-
-- When updating search results:
-  - Double-click your query to open the power query editor.
-  - Remove 'Changed Type' and 'Promoted Headers'.
-    ![image](https://github.com/user-attachments/assets/116d9b44-8d01-45a6-ac17-f9863c83bf8c)
-  - Under "Applied Steps", click on **Source** and check the contents in this step.
-    ![image](https://github.com/user-attachments/assets/201fc109-c58f-4ed0-a5b7-16d43eed3665)
-
-    The contents should look something like this:
-    ```
-    = Csv.Document(Web.Contents("https://examplesimpleconnecturl.com"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QyoteStyle.None])
-    ```
-    If this step is specifying a format (delimiter, columns, etc.), this can all get removed. Modify the step so that it looks like this:
-    ```
-    = Csv.Document(Web.Contents("https://examplesimpleconnecturl.com"))
-    ```
-  - Click **Refresh**.
-  - After refresh, click **Use First Row as Headers**.
-  - If the power query is still using the old headers, delete **Changed Type** under "Applied Steps" again.
-  - Click on **Promoted Headers** and refresh the query again.
-  - Click **Close & Load**.
-
+## **Credits and Acknowledgements**
 ---
 
-## Access Simple Connect via REST
-
-- Make a GET request to the URL provided in the Simple Connect Search record.
-- Authentication: Use Basic Auth with your username and password.
-- Results returned in CSV format.
-
-
+This extension was inspired by Tim Dietrich's <a href="https://timdietrich.me/netsuite-suitescripts/suiteql-query-tool/">SuiteQL Query tool</a>.
