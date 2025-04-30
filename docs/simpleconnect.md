@@ -88,11 +88,11 @@ Set this formula for both the criteria and the ROWKEY in results.
 
 ### Tips for Simple Connect in Excel
 
-- Rename queries to match data clearly:
+#### Rename queries to match data clearly:
   - Double-click 'Queries', rename under 'Properties'.
     ![image](https://github.com/user-attachments/assets/a161ee5c-bd12-49c7-8423-b512558363ad)
 
-- When updating search results:
+#### Updating search results:
   - Double-click your query to open the power query editor.
   - Remove 'Changed Type' and 'Promoted Headers'.
     ![image](https://github.com/user-attachments/assets/116d9b44-8d01-45a6-ac17-f9863c83bf8c)
@@ -113,7 +113,7 @@ Set this formula for both the criteria and the ROWKEY in results.
   - Click on **Promoted Headers** and refresh the query again.
   - Click **Close & Load**.
 
-- When sharing your excel document with another SimpleConnect User
+  #### Sharing your excel document with another SimpleConnect User
   - The user will need to authenticate within excel to access the connection using their own SimpleConnect credentials
   - Under the data tab navigate to Get Data—>Data Source Settings...
     ![image](https://github.com/user-attachments/assets/39a14a3b-e108-451f-92f8-ecbc74288ad0)
