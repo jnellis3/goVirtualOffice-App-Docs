@@ -116,13 +116,21 @@ Set this formula for both the criteria and the ROWKEY in results.
 ### Sharing your excel document with another SimpleConnect User
   - The user will need to authenticate within excel to access the connection using their own SimpleConnect credentials
   - Under the data tab navigate to Get Data—>Data Source Settings...
+    
     ![image](https://github.com/user-attachments/assets/39a14a3b-e108-451f-92f8-ecbc74288ad0)
+    
   - On the Data Source Settings page that appears, **right-click** on the connection string and click **Edit Permissions**
+    
     ![image](https://github.com/user-attachments/assets/15dfbe8c-7de7-4d42-a971-3c39421e893d)
+    
   - This will bring up the **edit permissions dialog**, from here, click **Edit...**
+    
     ![image](https://github.com/user-attachments/assets/f1f3a53a-b60d-4a6b-b3aa-0ebe41f4fc66)
+    
   - This will bring up the authentication screen. Typically this appears when the user first opens the document, but this is another way to get to this page.
+    
     ![image](https://github.com/user-attachments/assets/618143fa-a3bd-4436-acd0-ede4bb7d2cd6)
+    
   - This should be set to "Basic". The username will be the SimpleConnect username, and the password will be the password the user generated using the email link that was sent when their account was created.
   - Following these steps should allow the user to successfully connect and pull data using the shared document.
 
