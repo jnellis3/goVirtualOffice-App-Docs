@@ -4,14 +4,6 @@
 
 **Created By:** Jacob Nellis / goVirtualOffice LLC
 
-## **Table of Contents**
----
-
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Shortcuts](#shortcuts-and-important-notes)
-- [Credits/Acknowledgements](#credits-and-acknowledgements)
-
 ## **Introduction**
 ---
 
