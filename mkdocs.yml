@@ -1,4 +1,6 @@
 site_name: goVirtualOffice Accelerator's Documentation
+theme:
+  name: readthedocs
 nav:
   - Home: index.md
   - SimpleConnect: simpleconnect.md
