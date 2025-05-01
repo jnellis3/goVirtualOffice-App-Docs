@@ -100,13 +100,17 @@ Set this formula for both the criteria and the ROWKEY in results.
     ![image](https://github.com/user-attachments/assets/201fc109-c58f-4ed0-a5b7-16d43eed3665)
 
     The contents should look something like this:
+    
     ```
     = Csv.Document(Web.Contents("https://examplesimpleconnecturl.com"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QyoteStyle.None])
     ```
+    
     If this step is specifying a format (delimiter, columns, etc.), this can all get removed. Modify the step so that it looks like this:
+    
     ```
     = Csv.Document(Web.Contents("https://examplesimpleconnecturl.com"))
     ```
+    
   - Click **Refresh**.
   - After refresh, click **Use First Row as Headers**.
   - If the power query is still using the old headers, delete **Changed Type** under "Applied Steps" again.
