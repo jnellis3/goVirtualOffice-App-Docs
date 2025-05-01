@@ -6,3 +6,5 @@ nav:
   - SimpleConnect: simpleconnect.md
   - BoostSync: boostsync.md
   - SuiteQL Chrome Extension: suiteql.md
+plugins:
+  - autoref
