@@ -132,7 +132,7 @@ Set this formula for both the criteria and the ROWKEY in results.
     ![image](https://github.com/user-attachments/assets/618143fa-a3bd-4436-acd0-ede4bb7d2cd6)
     
   - This should be set to "Basic". The username will be the SimpleConnect username, and the password will be the password the user generated using the email link that was sent when their account was created.
-    - **Note: ** The user must be set up as a SimpleConnect user and be added to the applicable SimpleConnect searches. See [Getting Started](## Getting Started) for information on user setup.
+    - **Note: ** The user must be set up as a SimpleConnect user and be added to the applicable SimpleConnect searches. See [Getting Started](# Getting Started) for information on user setup.
   - Following these steps should allow the user to successfully connect and pull data using the shared document.
 
 ---
