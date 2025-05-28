@@ -28,6 +28,8 @@ Simple Connect is the simple way to export NetSuite Saved Searches into external
 
 ### Setting Up a Saved Search for Simple Connect
 
+When creating a search that will be used with BoostConnect, a ROWKEY must be created in the results column that uniquely identifies the row. Without this, you risk rows being dropped when pulling into Excel as the tool will consider rows with the same ROWKEY to be duplicates. For a search that returns one row per record, the ROWKEY can simply be the records internal id, for more complex searches, you may need to create a more complex ROWKEY to keep them unique. See examples below.
+
 #### Example: Single Record per Row (e.g., Non-Inventory items)
 
 1. Navigate to **Lists > Saved Searches > New**.
