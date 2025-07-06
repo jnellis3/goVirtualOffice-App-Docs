@@ -1,6 +1,20 @@
-# BoostSync Features and Limitations
+# BoostSync
 
-BoostSync is a data synchronization tool designed to connect and align data between NetSuite and HubSpot systems. This document outlines the core components and their limitations.
+BoostSync is an integration tool that automatically keeps your NetSuite data in step with other systems such as HubSpot.  It removes the need to manually copy information between platforms so your team always works with the same records everywhere.
+
+## How It Works (Non-Technical Overview)
+
+1. **Choose what to sync** – In NetSuite you create a configuration that specifies which record types (for example customers, contacts, deals) should stay in sync.
+2. **BoostSync compares the systems** – The app checks for new or updated records in each system and determines if the same record already exists in the other system.
+3. **Fields are updated automatically** – When matches are found, the selected fields are kept consistent. New records can also be created when they don’t exist in the other system.
+4. **Run on demand or on a schedule** – Synchronizations can be triggered manually or set to occur on a regular schedule.
+5. **Monitor results** – BoostSync keeps a log of actions so you can confirm records were synced successfully.
+
+The configuration options described below provide more detail for technical administrators, but the general idea is simply that BoostSync handles the heavy lifting of copying data back and forth.
+
+---
+
+## BoostSync Features and Limitations
 
 ## Configurations
 
