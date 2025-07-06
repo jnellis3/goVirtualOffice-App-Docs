@@ -5,6 +5,7 @@ nav:
   - Home: index.md
   - SimpleConnect: simpleconnect.md
   - BoostSync: boostsync.md
+  - SimpleChart: simplechart.md
   - SuiteQL Chrome Extension: suiteql.md
 plugins:
   - autorefs
