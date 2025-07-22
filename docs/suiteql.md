@@ -1,8 +1,6 @@
 <h1 style='text-align: center;'> Netsuite Query Extension </h1>
 
-**Version:** 1.0.0.0
-
-**Created By:** Jacob Nellis / goVirtualOffice LLC
+**Version:** 2.0.1
 
 ## **Introduction**
 ---
